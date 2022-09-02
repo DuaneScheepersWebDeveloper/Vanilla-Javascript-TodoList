@@ -1,9 +1,3 @@
-// const hamburger = document.querySelector('.hamburger');
-// const mobile_menu = document.querySelector('.mobile-nav');
-// mobile_menu,
-// 	hamburger.addEventListener('click', function () {
-// 		this.classList.toggle('is-active');
-// 	});
 window.onload = function () {
 	window.addEventListener('scroll', function (e) {
 		if (window.pageYOffset > 100) {

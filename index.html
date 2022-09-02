@@ -6,13 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- This is your stylesheets -->
 		<!-- --------------------------------------------------------------------------------------------------- -->
-		<link rel="stylesheet" type="text/css" href="static/css/styles.css" />
-		<link rel="stylesheet" type="text/css" href="static/css/navbar.css" />
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="static/css/defaultStyles.css"
-		/>
+		<link rel="stylesheet" type="text/css" href="src/css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="src/css/navbar.css" />
+		<link rel="stylesheet" type="text/css" href="src/css/defaultStyles.css" />
 		<!-- --------------------------------------------------------------------------------------------------- -->
 		<!-- Your fonts (my personal favorite is Roboto) -->
 		<link
@@ -44,7 +40,7 @@
 			<nav>
 				<div class="custom-nav-container">
 					<div class="header">
-						<a href="" class="logo">My Todo-List</a>
+						<a href="" class="logo"></a>
 					</div>
 					<div class="menu">
 						<a href="#footer"
@@ -64,10 +60,43 @@
 		</nav>
 		<div class="content" id="content">
 			<!-- --------------------------------------------------------------------------------------------------- -->
-			<!-- ------------------This is where you start working-------------------------- -->
-			<!-- --------------------------------------------------------------------------------------------------- -->
+			<div class="app">
+				<h4 class="my-3">Todo App</h4>
+				<div id="addNew">
+					<span>Add new Task </span>
+					
+				</div>
+				<hr />
+				<h5 class="my-3">Things to do</h5>
+				<div id="tasks">
+					<div class="singleTask">
+						<div class="taskItem">
+							<span class="taskName">Task 1</span>
+							<span class="taskDescription">Going to Gym</span>
+							<span class="taskDate">2022-01-20</span>
+						</div>
+						<div class="options">
+							<i class="fa-solid fa-pen-to-square"></i>
+							<i class="fa-solid fa-trash"></i>
+							</div>
+						</div>
 
-			<!-- --------------------------------------------------------------------------------------------------- -->
+							<div class="singleTask">
+						<div class="taskItem">
+							<span class="taskName">Task 1</span>
+							<span class="taskDescription">Going to Gym</span>
+							<span class="taskDate">2022-01-20</span>
+						</div>
+						<div class="options">
+							<i class="fa-solid fa-pen-to-square"></i>
+							<i class="fa-solid fa-trash"></i>
+							</div>
+						</div>
+						
+					</div>
+					<hr />
+				</div>
+			</div>
 			<!-- --------------------------------------------------------------------------------------------------- -->
 		</div>
 
@@ -113,8 +142,15 @@
 		</footer>
 	</body>
 </html>
-<script src="static/javascript/navbar.js" charset="utf-8"></script>
-<script src="static/javascript/index.js" charset="utf-8"></script>
+<script src="src/components/index.js" charset="utf-8"></script>
+<script src="src/components/navbar.js" charset="utf-8"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"
+></script>
 <script
 	src="https://kit.fontawesome.com/80b954ffb3.js"
 	crossorigin="anonymous"

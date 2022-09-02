@@ -1,0 +1,119 @@
+.content {
+	color: #fff;
+	padding: 30px;
+	height: auto;
+	margin: 30px;
+}
+.app {
+	border-radius: 2rem;
+	box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+	border-top: 1px solid rgba(255, 255, 255, 0.5);
+	border-left: 1px solid rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.025);
+	padding: 20px;
+	margin: 10px;
+	height: 600px;
+	width: 100%;
+}
+.app h4 {
+	text-align: center;
+	font-size: 30px;
+	text-decoration: underline;
+	font-weight: bold;
+}
+.app h5 {
+	text-align: center;
+
+	text-decoration: underline;
+	font-weight: bold;
+}
+.app #addNew {
+	margin-left: 30%;
+	margin-right: 30%;
+	padding: 7px 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: dodgerblue;
+
+	border: 1px solid white;
+	font-size: 25px;
+	border-radius: 1rem;
+	cursor: pointer;
+	text-align: center;
+	justify-content: center;
+}
+.fa-plus {
+	background-color: dodgerblue;
+	padding: 10px;
+	border-radius: 0.5rem;
+}
+.app #addNew:hover {
+	background-color: #0a2f53;
+}
+#tasks .singleTask {
+	display: grid;
+	grid-template-columns: 5fr 1fr;
+	align-items: center;
+	padding: 5px;
+	margin: 10px;
+	border-radius: 0.5rem;
+	background: rgba(255, 255, 255, 0.07);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.88);
+}
+
+#tasks .options {
+	display: flex;
+	align-items: center;
+	justify-content: right;
+}
+#tasks .options i {
+	padding: 10px;
+	cursor: pointer;
+}
+#tasks .options .fa-pen-to-square {
+	background-color: #3a6;
+	padding: 10px;
+	border-radius: 0.5rem 0 0 0.5rem;
+}
+#tasks .options .fa-pen-to-square:hover {
+	background-color: #7cfc00;
+	padding: 10px;
+	border-radius: 0.5rem 0 0 0.5rem;
+}
+#tasks .options .fa-trash {
+	background-color: red;
+	border-radius: 0 0.5rem 0.5rem 0;
+}
+#tasks .options .fa-trash:hover {
+	background-color: #800000;
+	border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.taskItem .taskHeading {
+	font-size: 25px;
+	text-decoration: underline;
+}
+.taskDate {
+	float: right;
+	font-size: 20px;
+	text-decoration: underline;
+}
+
+.taskItem p {
+	font-size: 18px;
+}
+.taskItem {
+	align-items: center;
+	text-align: center;
+}
+.taskDescription {
+	font-size: 20px;
+}
+/* <span class="taskDate">2022-01-20</span> */
+.taskName {
+	text-decoration: underline;
+	float: left;
+	font-size: 22px;
+}
