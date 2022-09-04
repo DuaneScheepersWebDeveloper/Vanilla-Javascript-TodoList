@@ -12,7 +12,7 @@
 	background-color: rgba(255, 255, 255, 0.025);
 	padding: 20px;
 	margin: 10px;
-	height: 600px;
+	height: 800px;
 	width: 100%;
 }
 .app h4 {
@@ -51,6 +51,15 @@
 .app #addNew:hover {
 	background-color: #0a2f53;
 }
+#tasks {
+	padding: 20px;
+	max-height: 500px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	scrollbar-width: thin; /* "auto" or "thin" */
+	scrollbar-color: dodgerblue #fff; /* scroll thumb and track */
+}
+
 #tasks .singleTask {
 	display: grid;
 	grid-template-columns: 5fr 1fr;
@@ -73,12 +82,12 @@
 	cursor: pointer;
 }
 #tasks .options .fa-pen-to-square {
-	background-color: #3a6;
+	background-color: dodgerblue;
 	padding: 10px;
 	border-radius: 0.5rem 0 0 0.5rem;
 }
 #tasks .options .fa-pen-to-square:hover {
-	background-color: #7cfc00;
+	background-color: #0a2f53;
 	padding: 10px;
 	border-radius: 0.5rem 0 0 0.5rem;
 }
@@ -89,6 +98,12 @@
 #tasks .options .fa-trash:hover {
 	background-color: #800000;
 	border-radius: 0 0.5rem 0.5rem 0;
+}
+#tasks .options .fa-check {
+	background-color: rgba(73, 204, 73);
+}
+#tasks .options .fa-check:hover {
+	background-color: #006a50;
 }
 
 .taskItem .taskHeading {
@@ -125,3 +140,9 @@
 .modal-body {
 	color: black;
 }
+
+/* .fa-pen-to-square,
+.fa-trash,
+.fa-check {
+	pointer-events: none;
+} */

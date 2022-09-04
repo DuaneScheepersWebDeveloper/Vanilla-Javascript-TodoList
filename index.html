@@ -55,66 +55,60 @@
 			</div>
 			<hr />
 			<h5 class="my-3">Things to do</h5>
-		<!-- Button trigger modal -->
+			<!-- Button trigger modal -->
 
 
-<!-- Modal -->
-<form class="modal fade " id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header customModal">
-        <h2 class="modal-title fw-bold" id="exampleModalLabel">Add a new Task</h2>
-       
-      </div>
-      <div class="modal-body">
-		<p class="fw-bold">Task Title</p>
-       <input class="form-control"  placeholder="Enter Title" type="text" name="" id="">
-	   <br>
-	   <p class="fw-bold">Due Date</p>
-	   <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span  class="input-group-text" id="basic-addon1">📅</span>
-  </div>
-  <input type="date" class="form-control" placeholder="Enter Date" aria-label="Username" aria-describedby="basic-addon1">
-</div>
-	   <br>
-	   <p class="fw-bold">Description</p>
-	   <textarea class="form-control"placeholder="Enter a description" type="date" id="" cols="30" rows="5"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add Task</button>
-      </div>
-    </div>
-  </div>
-</form>
+			<!-- Modal -->
+			<form  class="modal fade " id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header customModal">
+							<h2 class="modal-title fw-bold" id="exampleModalLabel">Add a new Task</h2>
+
+						</div>
+						<div class="modal-body">
+							<p class="fw-bold">Task Title</p>
+							<input class="form-control" placeholder="Enter Title" type="text" name="" id="taskTitle" required>
+							<br>
+							<p class="fw-bold">Due Date</p>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">📅</span>
+								</div>
+								<input type="date" class="form-control" placeholder="Enter Date" aria-label="Username"
+									aria-describedby="basic-addon1" id="taskDueDate" required>
+							</div>
+							<br>
+							<p class="fw-bold">Description</p>
+							<textarea class="form-control" placeholder="Enter a description" type="date" id="taskDescription" cols="30"
+								rows="5" id="taskDescription" required></textarea>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button class="btn btn-primary" type="submit" >Add a Task</button>
+						</div>
+					</div>
+				</div>  
+			</form>
 
 
 
 			<div id="tasks">
-				<div class="singleTask">
+				<div class="singleTask" id="task">
 					<div class="taskItem">
-						<span class="taskName">Task 1</span>
+						<span class="taskName"id="text">Task 1</span>
 						<span class="taskDescription">Going to Gym</span>
 						<span class="taskDate text-secondary">2022-01-20</span>
 					</div>
 					<div class="options">
-						<i class="fa-solid fa-pen-to-square"></i>
-						<i class="fa-solid fa-trash"></i>
+						<i id="editTask"class="fa-solid fa-pen-to-square editBtn"></i>
+						<i id="completedTask"class="fa-solid fa-check checkBtn"></i>
+						<i id="deleteTask"class="fa-solid fa-trash trashBtn"></i>
 					</div>
 				</div>
 
-				<div class="singleTask">
-					<div class="taskItem">
-						<span class="taskName">Task 1</span>
-						<span class="taskDescription">Going to Gym</span>
-						<span class="taskDate text-secondary">2022-01-20</span>
-					</div>
-					<div class="options">
-						<i class="fa-solid fa-pen-to-square"></i>
-						<i class="fa-solid fa-trash"></i>
-					</div>
-				</div>
+			
 
 			</div>
 			<hr />
@@ -159,7 +153,7 @@
 </body>
 
 </html>
-<script src="src/components/index.js" charset="utf-8"></script>
+<script src="src/components/app.js" charset="utf-8"></script>
 <script src="src/components/navbar.js" charset="utf-8"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
