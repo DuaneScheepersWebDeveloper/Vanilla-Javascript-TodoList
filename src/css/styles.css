@@ -1,8 +1,15 @@
-.content {
-	color: #fff;
-	padding: 30px;
-	height: auto;
-	margin: 30px;
+/* Variables */
+:root {
+	--primary: dodgerblue;
+	--business: dodgerblue;
+	--personal: #57a845;
+	--light: #eee;
+	--grey: #888;
+	--dark: #313154;
+
+	--shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	--business-glow: 0px 0px 4px dodgerblue;
+	--personal-glow: 0px 0px 4px #57a845;
 }
 .app {
 	border-radius: 2rem;
@@ -10,139 +17,233 @@
 	border-top: 1px solid rgba(255, 255, 255, 0.5);
 	border-left: 1px solid rgba(255, 255, 255, 0.5);
 	background-color: rgba(255, 255, 255, 0.025);
-	padding: 20px;
-	margin: 10px;
-	height: 800px;
-	width: 100%;
+	padding: 10px;
+	margin: 25px;
+	height: 1000px;
+	width: auto;
 }
-.app h4 {
+form h4 {
 	text-align: center;
-	font-size: 30px;
 	text-decoration: underline;
-	font-weight: bold;
 }
-.app h5 {
-	text-align: center;
 
-	text-decoration: underline;
-	font-weight: bold;
+input:not([type='radio']):not([type='checkbox']),
+button {
+	appearance: none;
+	border: none;
+	outline: none;
+	background: none;
+	cursor: initial;
 }
-.app #addNew {
-	margin-left: 30%;
-	margin-right: 30%;
-	padding: 7px 10px;
+/* End of Resets */
+
+section {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+h3 {
+	text-align: center;
+	color: #fff;
+	font-size: 1rem;
+	font-weight: 400;
+	margin-bottom: 0.5rem;
+	text-decoration: underline;
+}
+
+h4 {
+	color: #fff;
+	font-size: 0.875rem;
+	font-weight: 700;
+	margin-bottom: 0.5rem;
+}
+
+.createTodo input[type='text'] {
+	display: block;
+	width: 100%;
+	font-size: 1.125rem;
+	padding: 1rem 1.5rem;
+	background-color: #fff;
+	border-radius: 0.5rem;
+	margin-bottom: 1.2rem;
+}
+
+.createTodo .options {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.createTodo .options label {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+	border-top: 1px solid rgba(255, 255, 255, 0.5);
+	border-left: 1px solid rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.025);
+	padding: 0.8rem;
+
+	border-radius: 0.5rem;
+	cursor: pointer;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+	display: none;
+}
+
+.bubble {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	background: dodgerblue;
-
-	border: 1px solid white;
-	font-size: 25px;
-	border-radius: 1rem;
-	cursor: pointer;
-	text-align: center;
 	justify-content: center;
+	width: 20px;
+	height: 20px;
+	border-radius: 999px;
+	border: 2px solid var(--business);
+	box-shadow: var(--business-glow);
 }
-.fa-plus {
-	background-color: dodgerblue;
-	padding: 10px;
+
+.bubble.personal {
+	border-color: var(--personal);
+	box-shadow: var(--personal-glow);
+}
+
+.bubble::after {
+	content: '';
+	display: block;
+	opacity: 0;
+	width: 0px;
+	height: 0px;
+	background-color: var(--business);
+	box-shadow: var(--business-glow);
+	border-radius: 999px;
+	transition: 0.2s ease-in-out;
+}
+
+.bubble.personal::after {
+	background-color: var(--personal);
+	box-shadow: var(--personal-glow);
+}
+
+input:checked ~ .bubble::after {
+	width: 10px;
+	height: 10px;
+	opacity: 1;
+}
+
+.createTodo .options label div {
+	color: #fff;
+	font-size: 1.125rem;
+	margin-top: 1rem;
+}
+
+.createTodo input[type='submit'] {
+	display: block;
+	width: 100%;
+	font-size: 1.125rem;
+	padding: 1rem 1.5rem;
+	color: #fff;
+	font-weight: 700;
+	text-transform: uppercase;
+	background-color: var(--primary);
+
 	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: 0.2s ease-out;
 }
-.app #addNew:hover {
-	background-color: #0a2f53;
+
+.createTodo input[type='submit']:hover {
+	opacity: 0.75;
 }
-#tasks {
-	padding: 20px;
-	max-height: 500px;
+
+.todo-list .list {
+	margin: 1rem 0;
+	max-height: 450px;
+
 	overflow-y: auto;
 	overflow-x: hidden;
-	scrollbar-width: thin; /* "auto" or "thin" */
-	scrollbar-color: dodgerblue #fff; /* scroll thumb and track */
+	scrollbar-width: thin;
+	scrollbar-color: dodgerblue #fff;
 }
 
-#tasks .singleTask {
-	display: grid;
-	grid-template-columns: 5fr 1fr;
-	align-items: center;
-	padding: 5px;
-	margin: 10px;
-	border-radius: 0.5rem;
-	background: rgba(255, 255, 255, 0.07);
-	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-	border: 1px solid rgba(255, 255, 255, 0.88);
-}
-
-#tasks .options {
+.todo-list .todo-item {
 	display: flex;
 	align-items: center;
-	justify-content: right;
+
+	border-top: 1px solid rgba(255, 255, 255, 0.5);
+	border-left: 1px solid rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.025);
+	padding: 1rem;
+	border-radius: 0.5rem;
+
+	margin: 1rem;
 }
-#tasks .options i {
-	padding: 10px;
+
+.todo-item label {
+	display: block;
+
 	cursor: pointer;
 }
-#tasks .options .fa-pen-to-square {
-	background-color: dodgerblue;
-	padding: 10px;
-	border-radius: 0.5rem 0 0 0.5rem;
+
+.todo-item .todo-content {
+	flex: 1 1 0%;
 }
-#tasks .options .fa-pen-to-square:hover {
-	background-color: #0a2f53;
-	padding: 10px;
-	border-radius: 0.5rem 0 0 0.5rem;
+
+.todo-item .todo-content input {
+	color: #fff;
+	font-size: 1.125rem;
 }
-#tasks .options .fa-trash {
+
+.todo-item .actions {
+	display: flex;
+	align-items: center;
+}
+
+.todo-item .actions button {
+	display: block;
+	padding: 0.7rem;
+
+	color: #fff;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+}
+
+.todo-item .actions button:hover {
+	opacity: 0.75;
+}
+
+.todo-item .actions .edit {
+	border-radius: 0.5rem 0 0 0.5rem;
+	background-color: var(--primary);
+}
+
+.todo-item .actions .delete {
 	background-color: red;
 	border-radius: 0 0.5rem 0.5rem 0;
 }
-#tasks .options .fa-trash:hover {
-	background-color: #800000;
-	border-radius: 0 0.5rem 0.5rem 0;
+
+.todo-item.done .todo-content input {
+	text-decoration: line-through;
+	color: var(--grey);
 }
-#tasks .options .fa-check {
-	background-color: rgba(73, 204, 73);
+.todo-item.done {
+	background-color: rgba(255, 255, 255, 0.3);
 }
-#tasks .options .fa-check:hover {
-	background-color: #006a50;
+.todo-content {
+	margin-left: 40px;
 }
 
-.taskItem .taskHeading {
-	font-size: 25px;
-	text-decoration: underline;
+.errorMessage {
+	color: red;
+	font-weight: bold;
+	text-transform: uppercase;
 }
-.taskDate {
-	float: right;
-	font-size: 20px;
-	text-decoration: underline;
+.newTaskInput {
+	width: 400px;
+	border-radius: 5px;
 }
-
-.taskItem p {
-	font-size: 18px;
-}
-.taskItem {
-	align-items: center;
-	text-align: center;
-}
-.taskDescription {
-	cursor: pointer;
-	font-size: 20px;
-}
-/* <span class="taskDate">2022-01-20</span> */
-.taskName {
-	text-decoration: underline;
-	float: left;
-	font-size: 22px;
-}
-
-.customModal {
-	color: black;
-}
-.modal-body {
-	color: black;
-}
-
-/* .fa-pen-to-square,
-.fa-trash,
-.fa-check {
-	pointer-events: none;
-} */

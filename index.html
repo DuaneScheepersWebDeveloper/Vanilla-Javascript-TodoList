@@ -1,171 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!-- This is your stylesheets -->
-	<!-- --------------------------------------------------------------------------------------------------- -->
-	<link rel="stylesheet" type="text/css" href="src/css/styles.css" />
-	<link rel="stylesheet" type="text/css" href="src/css/navbar.css" />
-	<link rel="stylesheet" type="text/css" href="src/css/defaultStyles.css" />
-	<!-- --------------------------------------------------------------------------------------------------- -->
-	<!-- Your fonts (my personal favorite is Roboto) -->
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
-
-	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-	<!-- --------------------------------------------------------------------------------------------------- -->
-	<!-- Please feel free to change the title to whatever your project is -->
-	<title>My Todo-List</title>
-	<!-- --------------------------------------------------------------------------------------------------- -->
-</head>
-
-<body>
-	<header id="header">
-		<nav>
-			<div class="custom-nav-container">
-				<div class="header">
-					<a href="" class="logo"></a>
-				</div>
-				<div class="menu">
-					<a href="#footer"><i class="fa-solid fa-address-card"></i> Contact</a>
-				</div>
-				<button class="hamburger">
-					<span></span>
-					<span></span>
-					<span></span>
-				</button>
-			</div>
-		</nav>
-	</header>
-	<nav class="mobile-nav">
-		<a href="#footer"><i class="fa-solid fa-address-card"></i> Contact</a>
-	</nav>
-	<div class="content" id="content">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- This is your stylesheets -->
 		<!-- --------------------------------------------------------------------------------------------------- -->
-		<div class="app">
-			<h4 class="my-3">Todo App</h4>
-			<div id="addNew" type="button" class="btn btn-primary" data-toggle="modal" data-target="#form">
-				<span class="fw-bold">Add new Task </span>
+		<link rel="stylesheet" type="text/css" href="src/css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="src/css/navbar.css" />
+		<link rel="stylesheet" type="text/css" href="src/css/defaultStyles.css" />
+		<!-- --------------------------------------------------------------------------------------------------- -->
+		<!-- Your fonts (my personal favorite is Roboto) -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+			rel="stylesheet"
+		/>
 
-			</div>
-			<hr />
-			<h5 class="my-3">Things to do</h5>
-			<!-- Button trigger modal -->
+		<link
+			href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+			crossorigin="anonymous"
+		/>
+		<!-- --------------------------------------------------------------------------------------------------- -->
+		<!-- Please feel free to change the title to whatever your project is -->
+		<title>My Todo-List</title>
+		<!-- --------------------------------------------------------------------------------------------------- -->
+	</head>
 
-
-			<!-- Modal -->
-			<form  class="modal fade " id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-				aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header customModal">
-							<h2 class="modal-title fw-bold" id="exampleModalLabel">Add a new Task</h2>
-
-						</div>
-						<div class="modal-body">
-							<p class="fw-bold">Task Title</p>
-							<input class="form-control" placeholder="Enter Title" type="text" name="" id="taskTitle" required>
-							<br>
-							<p class="fw-bold">Due Date</p>
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">📅</span>
-								</div>
-								<input type="date" class="form-control" placeholder="Enter Date" aria-label="Username"
-									aria-describedby="basic-addon1" id="taskDueDate" required>
-							</div>
-							<br>
-							<p class="fw-bold">Description</p>
-							<textarea class="form-control" placeholder="Enter a description" type="date" id="taskDescription" cols="30"
-								rows="5" id="taskDescription" required></textarea>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button class="btn btn-primary" type="submit" >Add a Task</button>
-						</div>
+	<body>
+		<header id="header">
+			<nav>
+				<div class="custom-nav-container">
+					<div class="header">
+						<a href="" class="logo"></a>
 					</div>
-				</div>  
-			</form>
-
-
-
-			<div id="tasks">
-				<div class="singleTask" id="task">
-					<div class="taskItem">
-						<span class="taskName"id="text">Task 1</span>
-						<span class="taskDescription">Going to Gym</span>
-						<span class="taskDate text-secondary">2022-01-20</span>
+					<div class="menu">
+						<a href="#footer"
+							><i class="fa-solid fa-address-card"></i> Contact</a
+						>
 					</div>
-					<div class="options">
-						<i id="editTask"class="fa-solid fa-pen-to-square editBtn"></i>
-						<i id="completedTask"class="fa-solid fa-check checkBtn"></i>
-						<i id="deleteTask"class="fa-solid fa-trash trashBtn"></i>
-					</div>
+					<button class="hamburger">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
 				</div>
+			</nav>
+		</header>
+		<nav class="mobile-nav">
+			<a href="#footer"><i class="fa-solid fa-address-card"></i> Contact</a>
+		</nav>
+		<div class="content">
+			<!-- --------------------------------------------------------------------------------------------------- -->
 
-			
+			<div class="app">
+				<!-- New Todo -->
+				<section class="createTodo">
+					<form id="newTodoForm">
+						<h4>What do you need to get done today?</h4>
+						<input
+							type="text"
+							placeholder="e.g. Get some milk"
+							name="content"
+							id="content"
+						/>
+						<p class="errorMessage" id="newTaskError" style="display: none">
+							Please enter a valid task, you can't do nothing today!
+						</p>
+						<h4>Pick a category</h4>
+						<div class="options">
+							<label>
+								<input
+									type="radio"
+									name="category"
+									id="category1"
+									value="business"
+								/>
+								<span class="bubble business"></span>
+								<div>Business</div>
+							</label>
+							<label>
+								<input
+									type="radio"
+									name="category"
+									id="category2"
+									value="personal"
+								/>
+								<span class="bubble personal"></span>
+								<div>Personal</div>
+							</label>
+						</div>
 
+						<input type="submit" value="Add a new task" />
+					</form>
+				</section>
+				<section class="todo-list">
+					<h3>Task List</h3>
+					<div class="list" id="todoList"></div>
+				</section>
+				<!-- End of Todo List -->
 			</div>
-			<hr />
+
+			<!-- --------------------------------------------------------------------------------------------------- -->
 		</div>
-	</div>
-	<!-- --------------------------------------------------------------------------------------------------- -->
-	</div>
 
-	<footer id="footer">
-		<div class="footer-content">
-			<div class="personalInfo">
-				<div class="bottomLine"></div>
-				<h3 class="textEffect">Duane Scheepers</h3>
-				<h4 class="textEffect">
-					<i class="fa fa-whatsapp"></i> <span>072 495 4378</span>
-				</h4>
-				<h4 class="textEffect">
-					<i class="fa fa-envelope"></i>
-					<span class="underline">duaneo2011@gmail.com</span>
-				</h4>
-			</div>
-			<div class="socials">
-				<div>
-					<a href="https://www.instagram.com/coffe_is_great2021/"><i class="fa fa-instagram"></i></a>
+		<footer id="footer">
+			<div class="footer-content">
+				<div class="personalInfo">
+					<div class="bottomLine"></div>
+					<h3 class="textEffect">Duane Scheepers</h3>
+					<h4 class="textEffect">
+						<i class="fa fa-whatsapp"></i> <span>072 495 4378</span>
+					</h4>
+					<h4 class="textEffect">
+						<i class="fa fa-envelope"></i>
+						<span class="underline">duaneo2011@gmail.com</span>
+					</h4>
 				</div>
-				<div>
-					<a href="https://github.com/DuaneScheepersWebDeveloper"><i class="fa fa-github"></i></a>
+				<div class="socials">
+					<div>
+						<a href="https://www.instagram.com/coffe_is_great2021/"
+							><i class="fa fa-instagram"></i
+						></a>
+					</div>
+					<div>
+						<a href="https://github.com/DuaneScheepersWebDeveloper"
+							><i class="fa fa-github"></i
+						></a>
+					</div>
+					<div>
+						<a href="https://www.linkedin.com/in/duane-scheepers-b2bb53240/"
+							><i class="fa fa-linkedin-square"></i
+						></a>
+					</div>
 				</div>
-				<div>
-					<a href="https://www.linkedin.com/in/duane-scheepers-b2bb53240/"><i
-							class="fa fa-linkedin-square"></i></a>
-				</div>
-			</div>
 
-			<div class="footer-bottom">
-				<div class="footer-menu">
-					<a href="" class="footerArrow"><i class="fa-solid fa-circle-arrow-up"></i></a>
+				<div class="footer-bottom">
+					<div class="footer-menu">
+						<a href="" class="footerArrow"
+							><i class="fa-solid fa-circle-arrow-up"></i
+						></a>
+					</div>
 				</div>
 			</div>
-		</div>
-	</footer>
-</body>
-
+		</footer>
+	</body>
 </html>
 <script src="src/components/app.js" charset="utf-8"></script>
 <script src="src/components/navbar.js" charset="utf-8"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+<script
+	src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"
+></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	crossorigin="anonymous"
+></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"
+></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-	crossorigin="anonymous"></script>
+	crossorigin="anonymous"
+></script>
 
-<script src="https://kit.fontawesome.com/80b954ffb3.js" crossorigin="anonymous"></script>
+<script
+	src="https://kit.fontawesome.com/80b954ffb3.js"
+	crossorigin="anonymous"
+></script>

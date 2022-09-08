@@ -1,108 +1,126 @@
-//---------------------------------------------------
-//Stuff we need to get from our HTML
-const form = document.querySelector('#form');
-const taskList = document.querySelector('#tasks');
-const task = document.querySelector('#task');
-const editTask = document.querySelector('#editTask');
-const completedTask = document.querySelector('#completedTask');
-const deleteTask = document.querySelector('#deleteTask');
-//---------------------------------------------------
-//The three things we must get from our form
-let id;
-let taskTitle;
-let taskDueDate;
-let taskDescription;
-
-//---------------------------------------------------
-//Our Task class
-class Task {
-	constructor(
-		taskIdParameter,
-		taskTitleParameter,
-		taskDueDateParameter,
-		taskDescriptionParameter
-	) {
-		this.id = taskIdParameter;
-		this.taskTitle = taskTitleParameter;
-		this.taskDueDate = taskDueDateParameter;
-		this.taskDescription = taskDescriptionParameter;
-	}
-	get getTaskId() {
-		return this.id;
-	}
-	get getTaskTitle() {
-		return this.taskTitle;
-	}
-	get getTaskDueDate() {
-		return this.taskDueDate;
-	}
-	get getTaskDescription() {
-		return this.taskDescription;
-	}
-}
-//---------------------------------------------------------------------
-//Our Tasks Array
-let tasksArray = [];
-//---------------------------------------------------------------------
-const checkStorage = () => {};
-//---------------------------------------------------------------------
-//This function submits and adds our inputs into the Array using the class
-//ADD
-const addTask = (event) => {
+const newTodoForm = document.querySelector('#newTodoForm');
+const todoList = document.querySelector('#todoList');
+//-------------------------------------------------------------
+window.addEventListener('load', () => {
+	todos = JSON.parse(localStorage.getItem('todos')) || [];
+	newTodoForm.addEventListener('submit', addTodo);
+	DisplayTodos();
+});
+//-------------------------------------------------------------
+const renderLocalStorage = () => {
+	localStorage.setItem('todos', JSON.stringify(todos));
+};
+//-------------------------------------------------------------
+const addTodo = (event) => {
 	event.preventDefault();
-	id = 1;
-	for (let i = 0; i < tasksArray.length; i++) {
-		id = tasksArray.length + 1;
-	}
-	taskTitle = document.querySelector('#taskTitle').value;
-	taskDueDate = document.querySelector('#taskDueDate').value;
-	taskDescription = document.querySelector('#taskDescription').value;
-	let newTask = new Task(id, taskTitle, taskDueDate, taskDescription);
+	//Our Object
 
-	tasksArray.push(newTask);
+	const todo = {
+		content: event.target.elements.content.value,
+		category: event.target.elements.category.value,
+		done: false,
+		createdAt: new Date().getTime(),
+	};
 
-	console.log(tasksArray);
-
-	displayTask(tasksArray);
-};
-//---------------------------------------------------------------------
-const deleteCheck = (event) => {
-	const currentTaskId = event.target.id;
-	const currentTask = event.target;
-	const fullTask = currentTask.parentElement.parentElement;
-	console.log(currentTask);
-	console.log(fullTask);
-
-	if (currentTaskId === 'deleteTask') {
-		fullTask.remove();
+	console.log(todo);
+	if (todo.content.length <= 0) {
+		document.querySelector('#newTaskError').style.display = 'block';
+	} else {
+		todos.push(newTodoItem);
+		console.log(todos);
+		renderLocalStorage();
+		event.target.reset();
+		DisplayTodos();
 	}
 };
-//---------------------------------------------------------------------
-//This function displays our tasks
-//Display
-const displayTask = (arguments) => {
-	taskList.innerHTML = '';
-	for (let i = 0; i < arguments.length; i++) {
-		taskList.innerHTML += `
- 			<div class="singleTask" id="task">
- 					<div class="taskItem">
- 						<span class="taskName"id="text">${
-							arguments[i].getTaskTitle.charAt(0).toUpperCase() +
-							arguments[i].getTaskTitle.slice(1)
-						}</span>
- 						<span class="taskDescription">${arguments[i].getTaskDescription}</span>
- 						<span class="taskDate text-secondary">${arguments[i].getTaskDueDate}</span>
- 					</div>
- 					<div class="options">
- 						<i id="editTask"class="fa-solid fa-pen-to-square editBtn"></i>
- 						<i id="completedTask"class="fa-solid fa-check checkBtn"></i>
- 						<i id="deleteTask"class="fa-solid fa-trash trashBtn"></i>
- 					</div>
- 				</div>
-    `;
-	}
+//-------------------------------------------------------------
+
+//Very Important
+//this function essentially renders our todos on the page
+//Also includes functions we could use inside our task item
+const DisplayTodos = () => {
+	//important so the code does'nt overlap with each entry
+	todoList.innerHTML = '';
+
+	//This forEach is responsible for creating the html for our
+	//tasklist item(todo)
+	todos.forEach((todo) => {
+		const todoItem = document.createElement('div');
+		todoItem.classList.add('todo-item');
+		const label = document.createElement('label');
+		const input = document.createElement('input');
+		const span = document.createElement('span');
+		const content = document.createElement('div');
+		const actions = document.createElement('div');
+		const edit = document.createElement('button');
+		const deleteButton = document.createElement('button');
+		input.type = 'checkbox';
+		input.checked = todo.done;
+		span.classList.add('bubble');
+		//checks what category and adds the appropriate class
+		if (todo.category == 'personal') {
+			span.classList.add('personal');
+		} else {
+			span.classList.add('business');
+		}
+		content.classList.add('todo-content');
+		actions.classList.add('actions');
+		edit.classList.add('edit');
+		edit.classList.add('fa-solid');
+		edit.classList.add('fa-edit');
+		deleteButton.classList.add('delete');
+		deleteButton.classList.add('fa-solid');
+		deleteButton.classList.add('fa-trash');
+		content.innerHTML = `<input type="text" value="${todo.content}" readonly>`;
+		edit.innerHTML = '';
+		deleteButton.innerHTML = '';
+		label.appendChild(input);
+		label.appendChild(span);
+		actions.appendChild(edit);
+		actions.appendChild(deleteButton);
+		todoItem.appendChild(label);
+		todoItem.appendChild(content);
+		todoItem.appendChild(actions);
+		todoList.appendChild(todoItem);
+		// this allows our done class to be displayed
+		if (todo.done) {
+			todoItem.classList.add('done');
+		}
+		//this function allows us to check if our task has been done or not
+		//and applies the appropriate class
+		const inputFunction = (event) => {
+			todo.done = event.target.checked;
+			renderLocalStorage();
+			if (todo.done) {
+				todoItem.classList.add('done');
+			} else {
+				todoItem.classList.remove('done');
+			}
+			DisplayTodos();
+		};
+		//this function allows us to edit our task item and change what we typed in
+		const editFunction = (event) => {
+			const input = content.querySelector('input');
+			input.removeAttribute('readonly');
+			input.focus();
+			input.addEventListener('blur', (event) => {
+				input.setAttribute('readonly', true);
+				todo.content = event.target.value;
+				renderLocalStorage();
+				DisplayTodos();
+			});
+		};
+		//This function simply deletes existing task items
+		const deleteFunction = () => {
+			todos = todos.filter((t) => t != todo);
+			renderLocalStorage();
+			DisplayTodos();
+		};
+
+		//our event listeners
+		edit.addEventListener('click', editFunction);
+		input.addEventListener('change', inputFunction);
+		deleteButton.addEventListener('click', deleteFunction);
+	});
 };
-//---------------------------------------------------------------------
-//Our Event Listeners
-form.addEventListener('submit', addTask);
-deleteTask.addEventListener('click', deleteCheck);
+//-------------------------------------------------------------
