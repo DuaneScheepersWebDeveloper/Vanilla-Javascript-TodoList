@@ -12,6 +12,7 @@
 	--business-glow: 0px 0px 4px dodgerblue;
 	--personal-glow: 0px 0px 4px #57a845;
 }
+
 .app {
 	border-radius: 2rem;
 	box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
@@ -23,6 +24,7 @@
 	height: 1000px;
 	width: auto;
 }
+
 form h4 {
 	text-align: center;
 	text-decoration: underline;
@@ -36,6 +38,7 @@ button {
 	background: none;
 	cursor: initial;
 }
+
 /* End of Resets */
 
 section {
@@ -175,19 +178,16 @@ input:checked ~ .bubble::after {
 .todo-list .todo-item {
 	display: flex;
 	align-items: center;
-
 	border-top: 1px solid rgba(255, 255, 255, 0.5);
 	border-left: 1px solid rgba(255, 255, 255, 0.5);
 	background-color: rgba(255, 255, 255, 0.025);
 	padding: 1rem;
 	border-radius: 0.5rem;
-
 	margin: 1rem;
 }
 
 .todo-item label {
 	display: block;
-
 	cursor: pointer;
 }
 
@@ -208,7 +208,6 @@ input:checked ~ .bubble::after {
 .todo-item .actions button {
 	display: block;
 	padding: 0.7rem;
-
 	color: #fff;
 	cursor: pointer;
 	transition: 0.2s ease-in-out;
@@ -232,9 +231,11 @@ input:checked ~ .bubble::after {
 	text-decoration: line-through;
 	color: var(--grey);
 }
+
 .todo-item.done {
 	background-color: rgba(255, 255, 255, 0.3);
 }
+
 .todo-content {
 	margin-left: 40px;
 }
@@ -244,7 +245,19 @@ input:checked ~ .bubble::after {
 	font-weight: bold;
 	text-transform: uppercase;
 }
+
 .newTaskInput {
 	width: 400px;
 	border-radius: 5px;
+}
+
+.alphabetButton {
+	width: 100%;
+	display: block;
+	color: #fff;
+	background-color: dodgerblue;
+	padding: 0.6rem;
+	border-radius: 5px;
+	text-transform: uppercase;
+	font-weight: bold;
 }

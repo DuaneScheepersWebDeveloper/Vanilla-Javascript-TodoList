@@ -1,4 +1,4 @@
-//This Just allows our navbar to work with
+//This Just allows our navbar to work with our app.
 //nothing fancy
 window.onload = function () {
 	window.addEventListener('scroll', function (e) {

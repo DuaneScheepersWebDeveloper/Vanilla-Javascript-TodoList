@@ -15,7 +15,7 @@
 			href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
 			rel="stylesheet"
 		/>
-		<!-- my bootstrapcdn -->
+		<!-- my bootstrap cdn -->
 		<link
 			href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
 			rel="stylesheet"
@@ -71,7 +71,7 @@
 				<section class="createTodo">
 					<!-- this is my form where you will be submitting your tasks -->
 					<form id="newTodoForm">
-						<h4>What do you need to get done today?</h4>
+						<h4>What do you need to get done today? Enter a Task below:</h4>
 						<!-- this is where you type in a new task -->
 						<input
 							type="text"
@@ -111,9 +111,20 @@
 						<input type="submit" value="Add a new task" />
 					</form>
 				</section>
+
 				<section class="todo-list">
 					<!-- The javascript will generate your todos in the todolist div -->
 					<div class="list" id="todoList"></div>
+				</section>
+				<section>
+					<button
+						class="alphabetButton"
+						id="alphabetically"
+						name="sortAlphabet"
+						value="sort"
+					>
+						Sort alphabetically
+					</button>
 				</section>
 				<!-- End of Todo List -->
 			</div>

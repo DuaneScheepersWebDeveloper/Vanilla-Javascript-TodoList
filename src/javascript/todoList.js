@@ -1,11 +1,15 @@
 const newTodoForm = document.querySelector('#newTodoForm');
 const todoList = document.querySelector('#todoList');
+const list = document.querySelector('.list'); //a class
 const errorMessage = document.querySelector('#newTaskError');
+const alphabeticallySorts = document.querySelector('#alphabetically');
 //-------------------------------------------------------------
+//This loads up as you start the app
+//todos is our array which we store our tasks
 window.addEventListener('load', () => {
 	todos = JSON.parse(localStorage.getItem('todos')) || [];
 	newTodoForm.addEventListener('submit', addTodo);
-	DisplayTodos();
+	displayTodos();
 });
 //-------------------------------------------------------------
 //This function essentially saves the array to our local storage on the browser
@@ -13,7 +17,7 @@ const renderLocalStorage = () => {
 	localStorage.setItem('todos', JSON.stringify(todos));
 };
 //-------------------------------------------------------------
-//This is what we need to push into our todos array
+//This is what we need to push into our todo's array created above
 let id;
 let taskContent;
 let taskCategory;
@@ -42,7 +46,6 @@ class Task {
 //-------------------------------------------------------------
 const addTodo = (event) => {
 	event.preventDefault();
-
 	id = 1;
 	for (let i = 0; i < todos.length; i++) {
 		id = todos.length + 1;
@@ -52,6 +55,7 @@ const addTodo = (event) => {
 	done = false;
 	createdAt = new Date().getTime();
 	//-----------------------------------------------
+	//Here our app creates a new task uses our class created above to create an object
 	let newTask = new Task(id, taskContent, taskCategory, done, createdAt);
 	console.log(newTask);
 	if (newTask.taskContent.length <= 0) {
@@ -61,20 +65,19 @@ const addTodo = (event) => {
 		todos.push(newTask);
 		renderLocalStorage();
 		event.target.reset();
-		DisplayTodos();
+		displayTodos();
 	}
 };
 //-------------------------------------------------------------
-
 //Very Important
 //this function essentially renders our todos on the page
 //Also includes functions we could use inside our task item
-const DisplayTodos = () => {
+const displayTodos = () => {
 	//important so the code does'nt overlap with each entry
 	todoList.innerHTML = '';
 
 	//This forEach is responsible for creating the html for our
-	//tasklist item(todo)
+	//tasklist item(newTask)
 	todos.forEach((newTask) => {
 		const todoItem = document.createElement('div');
 		todoItem.classList.add('todo-item');
@@ -128,7 +131,7 @@ const DisplayTodos = () => {
 			} else {
 				todoItem.classList.remove('done');
 			}
-			DisplayTodos();
+			displayTodos();
 		};
 		//this function allows us to edit our task item and change what we typed in
 		const editTask = (event) => {
@@ -139,14 +142,14 @@ const DisplayTodos = () => {
 				input.setAttribute('readonly', true);
 				newTask.taskContent = event.target.value;
 				renderLocalStorage();
-				DisplayTodos();
+				displayTodos();
 			});
 		};
 		//This function simply deletes existing task items
 		const deleteTask = () => {
 			todos = todos.filter((task) => task != newTask);
 			renderLocalStorage();
-			DisplayTodos();
+			displayTodos();
 		};
 
 		//our event listeners we use in display function
@@ -155,5 +158,30 @@ const DisplayTodos = () => {
 		deleteButton.addEventListener('click', deleteTask);
 	});
 };
-
+//This function simply sorts our tasks in alphabetical order
+const sortAlphabetically = () => {
+	//list is a global variable
+	let i, switching, listItems, shouldSwitch;
+	switching = true;
+	while (switching) {
+		switching = false;
+		listItems = list.getElementsByClassName('todo-item');
+		for (i = 0; i < listItems.length - 1; i++) {
+			shouldSwitch = false;
+			if (
+				listItems[i].innerHTML.toLowerCase() >
+				listItems[i + 1].innerHTML.toLocaleLowerCase()
+			) {
+				shouldSwitch = true;
+				break;
+			}
+		}
+		if (shouldSwitch) {
+			listItems[i].parentNode.insertBefore(listItems[i + 1], listItems[i]);
+			switching = true;
+		}
+	}
+};
+//this our event listener responsible for sorting our tasks. Its linked to the 'sort alphabetically' button
+alphabeticallySorts.addEventListener('click', sortAlphabetically);
 //-------------------------------------------------------------
