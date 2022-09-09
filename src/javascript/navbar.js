@@ -1,3 +1,5 @@
+//This Just allows our navbar to work with
+//nothing fancy
 window.onload = function () {
 	window.addEventListener('scroll', function (e) {
 		if (window.pageYOffset > 100) {

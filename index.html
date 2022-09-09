@@ -15,7 +15,7 @@
 			href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
 			rel="stylesheet"
 		/>
-
+		<!-- my bootstrapcdn -->
 		<link
 			href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
 			rel="stylesheet"
@@ -31,17 +31,21 @@
 			crossorigin="anonymous"
 		/>
 		<!-- --------------------------------------------------------------------------------------------------- -->
-		<!-- Please feel free to change the title to whatever your project is -->
+		<!-- My app's title -->
 		<title>My Todo-List</title>
 		<!-- --------------------------------------------------------------------------------------------------- -->
 	</head>
 
 	<body>
 		<header id="header">
+			<!-- This is my navbar -->
 			<nav>
 				<div class="custom-nav-container">
 					<div class="header">
-						<a href="" class="logo"></a>
+						<!-- this is the heading for your app -->
+						<a href="" class="logo"
+							>My Vanilla Javascript Todo-list Application</a
+						>
 					</div>
 					<div class="menu">
 						<a href="#footer"
@@ -57,26 +61,30 @@
 			</nav>
 		</header>
 		<nav class="mobile-nav">
+			<!-- this is a link to my contact information in the footer -->
 			<a href="#footer"><i class="fa-solid fa-address-card"></i> Contact</a>
 		</nav>
 		<div class="content">
 			<!-- --------------------------------------------------------------------------------------------------- -->
-
 			<div class="app">
 				<!-- New Todo -->
 				<section class="createTodo">
+					<!-- this is my form where you will be submitting your tasks -->
 					<form id="newTodoForm">
 						<h4>What do you need to get done today?</h4>
+						<!-- this is where you type in a new task -->
 						<input
 							type="text"
 							placeholder="e.g. Get some milk"
 							name="content"
 							id="content"
 						/>
+						<!-- This error message will appear only if you don't fill in your input above -->
 						<p class="errorMessage" id="newTaskError" style="display: none">
 							Please enter a valid task, you can't do nothing today!
 						</p>
 						<h4>Pick a category</h4>
+						<!-- this your categories to choose for your todos -->
 						<div class="options">
 							<label>
 								<input
@@ -86,7 +94,7 @@
 									value="business"
 								/>
 								<span class="bubble business"></span>
-								<div>Business</div>
+								<div>For Work</div>
 							</label>
 							<label>
 								<input
@@ -99,12 +107,12 @@
 								<div>Personal</div>
 							</label>
 						</div>
-
+						<!-- This is your submit button -->
 						<input type="submit" value="Add a new task" />
 					</form>
 				</section>
 				<section class="todo-list">
-					<h3>Task List</h3>
+					<!-- The javascript will generate your todos in the todolist div -->
 					<div class="list" id="todoList"></div>
 				</section>
 				<!-- End of Todo List -->
@@ -112,7 +120,7 @@
 
 			<!-- --------------------------------------------------------------------------------------------------- -->
 		</div>
-
+		<!-- This is my footer with my contact details -->
 		<footer id="footer">
 			<div class="footer-content">
 				<div class="personalInfo">
@@ -155,8 +163,9 @@
 		</footer>
 	</body>
 </html>
-<script src="src/components/app.js" charset="utf-8"></script>
-<script src="src/components/navbar.js" charset="utf-8"></script>
+<!-- These are my javascript links -->
+<script src="src/javascript/todoList.js" charset="utf-8"></script>
+<script src="src/javascript/navbar.js" charset="utf-8"></script>
 
 <script
 	src="https://code.jquery.com/jquery-3.6.0.min.js"
